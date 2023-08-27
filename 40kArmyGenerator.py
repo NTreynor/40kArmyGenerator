@@ -1,12 +1,13 @@
 import csv
 import random
 
+
 def load_units_from_csv(file_path):
     units = []
     with open(file_path, 'r', encoding='utf-8-sig') as f:
         reader = csv.DictReader(f)
-        #headers = reader.fieldnames
-        #print("CSV Headers:", headers)
+        # headers = reader.fieldnames
+        # print("CSV Headers:", headers)
         for row in reader:
             units.append({
                 'name': row['name'],
@@ -16,6 +17,7 @@ def load_units_from_csv(file_path):
                 'current_count': 0
             })
     return units
+
 
 def build_army(units, total_points, max_characters):
     army = []
@@ -44,11 +46,12 @@ def build_army(units, total_points, max_characters):
 
     # After ensuring one of each role, continue to add units until no affordable unit can be added
     while True:
-        affordable_units = [unit for unit in units if total_cost + unit['cost'] <= total_points and unit['current_count'] < unit['max']]
-        
+        affordable_units = [unit for unit in units if
+                            total_cost + unit['cost'] <= total_points and unit['current_count'] < unit['max']]
+
         if not affordable_units:
             break
-        
+
         unit = random.choice(affordable_units)
         if unit['role'] == 'character' and character_count >= max_characters:
             continue
@@ -60,8 +63,7 @@ def build_army(units, total_points, max_characters):
         if unit['role'] == 'character':
             character_count += 1
 
-    return army
-
+    return army, added_roles, total_cost
 
 
 def main():
@@ -70,13 +72,21 @@ def main():
         total_points = int(input("Enter the total points for the army: "))
         max_characters = int(input("Enter the maximum number of characters: "))
 
-        units = load_units_from_csv('orks.csv')
-        army = build_army(units, total_points, max_characters)
-        army = sorted(army, key=lambda x: x['role'])  # Sort by role
+        units = load_units_from_csv('MyList.csv')
+        armyInfo = build_army(units, total_points, max_characters)
+        point_total = armyInfo[2]
+        roles = armyInfo[1]
+        army = armyInfo[0]
+        army = sorted(army, key=lambda x: x['name'])  # Sort by role
+        roles = sorted(roles)  # Sort roles
 
         print("\nGenerated Army List:")
-        for unit in army:
-            print(f"{unit['name']} - {unit['cost']} points - Role: {unit['role']}")
+        for role in roles:
+            for unit in army:
+                if unit['role'] == role:
+                    print(f"{unit['name']} - {unit['cost']} points - Role: {unit['role']}")
+        print("\nTotal Points Cost:")
+        print(point_total)
 
 
 if __name__ == '__main__':

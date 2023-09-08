@@ -1,0 +1,20 @@
+name,cost,role,max
+Demon Prince (Wings),195,character,1
+Chaos Lord,75,character,1
+Sorceror,60,character,2
+Master of Possesion,80,character,1
+Chaos Lord in Terminator Armor,95,character,1
+Master of Executions,80,character,1
+Sorceror in Terminator Armor,90,character,1
+Obliterators,170,infantry,2
+Chosen,110,infantry,2
+Cultist Mob,55,infantry,1
+Legionaries,90,infantry,1
+Chaos Terminators,195,infantry,2
+Havocs,135,infantry,1
+Noise Marines,85,infantry,1
+Possessed,140,infantry,1
+Rhino,75,vehicle,2
+Vindicator,190,vehicle,1
+Heldrake,205,vehicle,0
+Venomcrawler,120,vehicle,1

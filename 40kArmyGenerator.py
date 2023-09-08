@@ -49,11 +49,20 @@ def build_army(units, total_points, max_characters):
         affordable_units = [unit for unit in units if
                             total_cost + unit['cost'] <= total_points and unit['current_count'] < unit['max']]
 
+        print(len(affordable_units))
+
         if not affordable_units:
             break
 
         unit = random.choice(affordable_units)
         if unit['role'] == 'character' and character_count >= max_characters:
+            ## if all are characters, then we break.
+            characterCount = 0
+            for affordUnit in affordable_units:
+                if affordUnit['role'] == 'character':
+                    characterCount += 1
+            if characterCount == len(affordable_units):
+                break
             continue
 
         army.append(unit)
@@ -72,7 +81,7 @@ def main():
         total_points = int(input("Enter the total points for the army: "))
         max_characters = int(input("Enter the maximum number of characters: "))
 
-        units = load_units_from_csv('MyList.csv')
+        units = load_units_from_csv('ChaosSpaceMarines.csv')
         armyInfo = build_army(units, total_points, max_characters)
         point_total = armyInfo[2]
         roles = armyInfo[1]

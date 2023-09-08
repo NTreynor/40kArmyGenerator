@@ -1,0 +1,14 @@
+name,cost,role,max
+Captain with Jump Pack,100,character,1
+Captain in Terminator Armour,95,character,1
+Primaris Captain,80,character,1
+Primaris Lieutenant,75,character,2
+Lieutenant in Phobos Armor,60,character,1
+Librarian In Phobos Armor, 75,character,1
+Suppressor Squad,85,infantry,1
+Infiltrators,100,infantry,2
+Intercessors,85,infantry,6
+Aggressors,100,infantry,1
+Terminator Assault Squad,205,infantry,1
+Redemptor Dreadnought,210,vehicle,1
+Repulsor Executioner,230,vehicle,1

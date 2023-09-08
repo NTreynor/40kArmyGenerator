@@ -49,7 +49,7 @@ def build_army(units, total_points, max_characters):
         affordable_units = [unit for unit in units if
                             total_cost + unit['cost'] <= total_points and unit['current_count'] < unit['max']]
 
-        print(len(affordable_units))
+        #print(len(affordable_units))
 
         if not affordable_units:
             break
